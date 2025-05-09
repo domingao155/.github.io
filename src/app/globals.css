@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff; 
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  min-height: 100vh;
+}
+
+.bg-pizza-rain-blur {
+  background-image: url("/images/fundo_pizza_cartoon_novo.jpg"); /* Nova imagem de fundo */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -10; 
+}
+
+
+/* Animação de pulsar para o banner promocional */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(255, 255, 0, 0.7), 0 0 10px rgba(255, 165, 0, 0.5);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(255, 255, 0, 1), 0 0 25px rgba(255, 165, 0, 0.7);
+    transform: scale(1.02);
+  }
+}
+
+.promo-banner-animated {
+  animation: pulse-glow 2.5s infinite ease-in-out;
+}
+
+/* Animação de pulsar suave para o indicador "ABERTO" */
+@keyframes subtle-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.status-aberto-animated {
+  animation: subtle-pulse 2s infinite ease-in-out;
+  display: inline-block; 
+}
+
+
+@keyframes popUpBounceIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.05);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes popUpFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+}
+
+.comentario-popup-enter-active {
+  animation-name: popUpBounceIn;
+  animation-duration: 0.7s; 
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+.comentario-popup-exit-active {
+  animation-name: popUpFadeOut;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+
+.comentario-popup-base {
+  position: fixed;
+  bottom: 1.25rem; 
+  left: 1.25rem; 
+  background-image: linear-gradient(to right, #f97316, #ef4444); 
+  color: white;
+  padding: 1rem; 
+  border-radius: 0.75rem; 
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.2); 
+  z-index: 50;
+  max-width: 22rem; 
+  border: 2px solid white; 
+  opacity: 0; 
+  transform: translateY(20px); 
+}
+
+/* Animação para item adicionado ao carrinho */
+@keyframes pulse-green-item {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); /* Cor verde do Tailwind (green-500) */
+    transform: scale(1);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+    transform: scale(1.02);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+    transform: scale(1);
+  }
+}
+
+.animate-pulse-green {
+  animation: pulse-green-item 1s ease-out;
+}
+
