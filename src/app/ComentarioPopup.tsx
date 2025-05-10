@@ -22,6 +22,9 @@ const ComentarioPopup: React.FC<ComentarioPopupProps> = ({
   const [indiceAtual, setIndiceAtual] = useState(0);
   const [visivel, setVisivel] = useState(false);
   const [animationClass, setAnimationClass] = useState('');
+  const [dragStartX, setDragStartX] = useState<number | null>(null);
+  const [dragDeltaX, setDragDeltaX] = useState(0);
+  const dragThreshold = 80; // pixels para considerar swipe
 
   const visibilityTimerRef = useRef<NodeJS.Timeout | null>(null);
   const animationTimerRef = useRef<NodeJS.Timeout | null>(null);
@@ -98,6 +101,58 @@ const ComentarioPopup: React.FC<ComentarioPopupProps> = ({
     };
   }, [comentarios, tempoVisivelMs, tempoIntervaloMs, delayInicialMs, visivel]);
 
+  // Funções para swipe touch
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setDragStartX(e.touches[0].clientX);
+  };
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (dragStartX !== null) {
+      setDragDeltaX(e.touches[0].clientX - dragStartX);
+    }
+  };
+  const handleTouchEnd = () => {
+    if (Math.abs(dragDeltaX) > dragThreshold) {
+      // Força o pop-up a sumir imediatamente
+      setAnimationClass('comentario-popup-exit-active');
+      setTimeout(() => {
+        setVisivel(false);
+        setDragDeltaX(0);
+        setDragStartX(null);
+        setIndiceAtual(prevIndice => (prevIndice + 1) % comentarios.length);
+      }, 300);
+    } else {
+      setDragDeltaX(0);
+      setDragStartX(null);
+    }
+  };
+
+  // Funções para swipe mouse (desktop)
+  const [mouseDown, setMouseDown] = useState(false);
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setMouseDown(true);
+    setDragStartX(e.clientX);
+  };
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (mouseDown && dragStartX !== null) {
+      setDragDeltaX(e.clientX - dragStartX);
+    }
+  };
+  const handleMouseUp = () => {
+    setMouseDown(false);
+    if (Math.abs(dragDeltaX) > dragThreshold) {
+      setAnimationClass('comentario-popup-exit-active');
+      setTimeout(() => {
+        setVisivel(false);
+        setDragDeltaX(0);
+        setDragStartX(null);
+        setIndiceAtual(prevIndice => (prevIndice + 1) % comentarios.length);
+      }, 300);
+    } else {
+      setDragDeltaX(0);
+      setDragStartX(null);
+    }
+  };
+
   if (comentarios.length === 0 || !visivel) {
     return null;
   }
@@ -131,7 +186,16 @@ const ComentarioPopup: React.FC<ComentarioPopupProps> = ({
           transform: translateY(40px);
         }
       `}</style>
-      <div className={`comentario-popup-base ${animationClass}`}>
+      <div
+        className={`comentario-popup-base ${animationClass}`}
+        style={{ transform: dragDeltaX ? `translateX(${dragDeltaX}px)` : undefined }}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+      >
         <div className="flex items-center mb-2">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 mr-3 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
