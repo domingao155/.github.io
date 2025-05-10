@@ -521,13 +521,15 @@ export default function Home() {
         {promoStep === 3 && renderCardapioSection("Escolha seu Broto Doce da Promoção", brotos, "Broto")}
         {(promoStep === 0 || promoStep >=4) && renderCardapioSection("Bebidas", bebidas)}
         <AvaliacoesClientes />
-        <ComentarioPopup
-          key={`comentario-popup-${String(!showModal)}`}
-          comentarios={novosComentariosPopup}
-          tempoVisivelSegundos={5} 
-          tempoIntervaloSegundos={7}
-          delayInicialSegundos={5}
-        />
+        {!showModal && !lojaEncontradaCepModal && (
+          <ComentarioPopup
+            key={`comentario-popup-${String(!showModal)}`}
+            comentarios={novosComentariosPopup}
+            tempoVisivelSegundos={5}
+            tempoIntervaloSegundos={7}
+            delayInicialSegundos={5}
+          />
+        )}
       </main>
 
       {getTotalCartItems() > 0 && !showCheckout && (
@@ -628,8 +630,6 @@ export default function Home() {
           onEnderecoConfirmado={handleEnderecoConfirmadoNoModal}
         />
       )}
-
-      <ComentarioPopup comentarios={novosComentariosPopup} />
 
       <footer className="bg-gray-800 text-white text-center p-8 mt-12">
         <div className="container mx-auto">
