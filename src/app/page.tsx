@@ -329,7 +329,7 @@ export default function Home() {
       
       {showPromoBanner && !promoCepStep && (
          <div 
-          className="fixed bottom-4 right-4 bg-gradient-to-br from-yellow-400 via-red-500 to-orange-600 text-white p-7 rounded-2xl shadow-2xl z-50 cursor-pointer promo-banner-container transform hover:scale-105 transition-transform duration-300 max-w-md border-4 border-yellow-300 promo-banner-animated flex flex-col items-center"
+          className="fixed bottom-2 right-2 sm:bottom-4 sm:right-4 bg-gradient-to-br from-yellow-400 via-red-500 to-orange-600 text-white p-4 sm:p-7 rounded-xl sm:rounded-2xl shadow-2xl z-50 cursor-pointer promo-banner-container transform hover:scale-105 transition-transform duration-300 max-w-xs sm:max-w-md border-2 sm:border-4 border-yellow-300 promo-banner-animated flex flex-col items-center"
           onClick={handleStartPromo}
         >
           <button 
@@ -340,17 +340,17 @@ export default function Home() {
             &times;
           </button>
           <div className="flex flex-col items-center mb-4">
-            <Image src="/images/logo_cartoon_pizza.jpg" alt="Super Pizza" width={70} height={70} className="rounded-full mb-2 border-4 border-white shadow-lg"/>
-            <h3 className="text-2xl font-extrabold drop-shadow-lg">SUPER PROMOÇÃO!</h3>
-            <p className="text-base font-medium text-yellow-100">Pizzas em Dobro + Broto Doce!</p>
+            <Image src="/images/logo_cartoon_pizza.jpg" alt="Super Pizza" width={70} height={70} className="w-12 h-12 sm:w-[70px] sm:h-[70px] rounded-full mb-2 border-4 border-white shadow-lg"/>
+            <h3 className="text-lg sm:text-2xl font-extrabold drop-shadow-lg">SUPER PROMOÇÃO!</h3>
+            <p className="text-xs sm:text-base font-medium text-yellow-100">Pizzas em Dobro + Broto Doce!</p>
           </div>
-          <div className="bg-white/30 p-3 rounded-xl mb-4 shadow">
-            <p className="text-center text-lg font-bold text-yellow-900">Pague 1 Pizza Grande e Leve OUTRA + 1 Broto Doce <strong className="text-yellow-500">GRÁTIS!</strong></p>
+          <div className="bg-white/30 p-2 sm:p-3 rounded-xl mb-2 sm:mb-4 shadow">
+            <p className="text-center text-base sm:text-lg font-bold text-yellow-900">Pague 1 Pizza Grande e Leve OUTRA + 1 Broto Doce <strong className="text-yellow-500">GRÁTIS!</strong></p>
           </div>
-          <div className="flex justify-center mb-3">
-            <Image src="/images/promocao_pizza.png" alt="Imagem da Promoção" width={180} height={180} className="rounded-xl shadow-xl border-2 border-yellow-200"/>
+          <div className="flex justify-center mb-2 sm:mb-3">
+            <Image src="/images/promocao_pizza.png" alt="Imagem da Promoção" width={180} height={180} className="w-20 h-20 sm:w-[180px] sm:h-[180px] rounded-xl shadow-xl border-2 border-yellow-200"/>
           </div>
-          <p className="text-xs text-center text-yellow-100 hover:text-white transition-colors font-semibold">Clique aqui para aproveitar esta oferta imperdível!</p>
+          <p className="text-[10px] sm:text-xs text-center text-yellow-100 hover:text-white transition-colors font-semibold">Clique aqui para aproveitar esta oferta imperdível!</p>
         </div>
       )}
 
@@ -473,40 +473,40 @@ export default function Home() {
         </div>
       )}
 
-      <header className="bg-gradient-to-r from-red-700 via-red-600 to-yellow-400 text-white p-8 shadow-xl sticky top-0 z-40 border-b-4 border-yellow-300">
-        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
-          <div className="flex items-center mb-4 md:mb-0">
-            <Image src="/images/logo_cartoon_pizza.jpg" alt="Super Pizza Logo" width={100} height={100} className="mr-5 rounded-full border-4 border-yellow-300 shadow-lg"/>
+      <header className="bg-gradient-to-r from-red-700 via-red-600 to-yellow-400 text-white p-4 sm:p-8 shadow-xl sticky top-0 z-40 border-b-4 border-yellow-300">
+        <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0">
+          <div className="flex items-center mb-4 sm:mb-0">
+            <Image src="/images/logo_cartoon_pizza.jpg" alt="Super Pizza Logo" width={60} height={60} className="mr-3 sm:mr-5 rounded-full border-4 border-yellow-300 shadow-lg"/>
             <div>
-              <h1 className="text-5xl font-extrabold tracking-tight drop-shadow-lg">Super Pizza</h1>
-              <div className="text-base mt-2 flex items-center gap-3">
-                <span className="bg-yellow-200 text-red-700 px-3 py-1 rounded-full font-semibold shadow">🍕 Mais de 100 pontos pelo Brasil</span>
-                <span className="mx-2 text-yellow-300 font-bold">|</span>
-                <span className="bg-green-200 text-green-800 px-3 py-1 rounded-full font-semibold shadow">🚀 Delivery rápido!</span>
+              <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight drop-shadow-lg">Super Pizza</h1>
+              <div className="text-xs sm:text-base mt-2 flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-3">
+                <span className="bg-yellow-200 text-red-700 px-2 py-1 sm:px-3 sm:py-1 rounded-full font-semibold shadow">🍕 Mais de 100 pontos pelo Brasil</span>
+                <span className="hidden sm:inline mx-2 text-yellow-300 font-bold">|</span>
+                <span className="bg-green-200 text-green-800 px-2 py-1 sm:px-3 sm:py-1 rounded-full font-semibold shadow">🚀 Delivery rápido!</span>
               </div>
             </div>
           </div>
-          <div className="flex items-center bg-green-500 px-5 py-2 rounded-full text-lg font-bold shadow-lg border-2 border-green-300 animate-pulse">
+          <div className="flex items-center bg-green-500 px-3 sm:px-5 py-1 sm:py-2 rounded-full text-base sm:text-lg font-bold shadow-lg border-2 border-green-300 animate-pulse mt-2 sm:mt-0">
             <span className="mr-2">Status:</span>
             <span className="font-extrabold text-white">ABERTO</span>
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 animate-pulse" viewBox="0 0 20 20" fill="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 sm:h-5 w-4 sm:w-5 ml-2 animate-pulse" viewBox="0 0 20 20" fill="currentColor">
               <circle cx="10" cy="10" r="3" />
             </svg>
           </div>
         </div>
-        <div className="container mx-auto mt-6">
+        <div className="container mx-auto mt-4 sm:mt-6">
           <input 
             type="text" 
             placeholder="Buscar no cardápio... (ex: Calabresa, Chocolate)" 
             value={searchTerm} 
             onChange={handleSearchChange} 
-            className="w-full p-4 rounded-xl border-2 border-yellow-400 focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-shadow duration-200 text-gray-800 shadow placeholder-gray-500 text-lg bg-white/90"
-            disabled={promoStep > 0 && promoStep < 4} // Desabilita busca durante a promoção
+            className="w-full p-3 sm:p-4 rounded-xl border-2 border-yellow-400 focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-shadow duration-200 text-gray-800 shadow placeholder-gray-500 text-base sm:text-lg bg-white/90"
+            disabled={promoStep > 0 && promoStep < 4}
           />
         </div>
       </header>
 
-      <main className="container mx-auto p-6">
+      <main className="container mx-auto p-2 sm:p-6">
         {promoStep > 0 && promoStep < 4 && (
           <div className="mb-8 p-4 rounded-xl bg-yellow-100 border-l-4 border-yellow-400 text-yellow-900 text-center text-lg font-semibold shadow">
             {promoStep === 1 && 'Escolha a pizza grande que você irá pagar!'}
@@ -631,9 +631,9 @@ export default function Home() {
         />
       )}
 
-      <footer className="bg-gray-800 text-white text-center p-8 mt-12">
+      <footer className="bg-gray-800 text-white text-center p-4 sm:p-8 mt-8 sm:mt-12">
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 mb-4 sm:mb-8">
             <div>
               <h5 className="text-xl font-semibold mb-3">Super Pizza</h5>
               <p className="text-gray-400 text-sm">A melhor pizza da cidade, entregue quentinha na sua casa! Experimente nossos sabores incríveis e promoções imperdíveis.</p>
@@ -654,7 +654,7 @@ export default function Home() {
               <p className="text-gray-400 text-sm">Endereço: pelo Brasil inteiro</p>
             </div>
           </div>
-          <div className="border-t border-gray-700 pt-8">
+          <div className="border-t border-gray-700 pt-4 sm:pt-8">
             <p className="text-gray-500 text-sm">&copy; {new Date().getFullYear()} Super Pizza. Todos os direitos reservados.</p>
             <div className="mt-3">
               <Image src="/images/selo_ssl.jpeg" alt="Selo SSL" width={80} height={40} className="mx-auto" />
